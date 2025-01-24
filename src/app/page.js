@@ -10,8 +10,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const POSTS_PER_PAGE = 12;
-  const TOTAL_POSTS = 100; 
-  const TOTAL_PAGES = Math.ceil(TOTAL_POSTS / POSTS_PER_PAGE); 
+  const TOTAL_POSTS = 100;
+  const TOTAL_PAGES = Math.ceil(TOTAL_POSTS / POSTS_PER_PAGE);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -35,7 +35,7 @@ export default function Home() {
 
   const getPaginationRange = () => {
     const range = [];
-    const maxButtons = 5; 
+    const maxButtons = 5;
     const halfRange = Math.floor(maxButtons / 2);
 
     let start = Math.max(1, page - halfRange);
@@ -59,75 +59,62 @@ export default function Home() {
       <h1 className="text-3xl font-bold text-center mb-8">Students Blog Post</h1>
 
       {loading ? (
-        <LoadingSpinner />
+        <span className="loading loading-bars loading-lg"></span>
       ) : (
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {posts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col"
-            >
-              <div className="p-4 flex-grow">
-                <h2 className="text-lg font-semibold text-gray-800 mb-2">
-                  {post.title.charAt(0).toUpperCase() + post.title.slice(1)}
-                </h2>
-                <p className="text-gray-600 text-sm line-clamp-2">{post.body}</p>
-              </div>
-              <div className="p-4 bg-gray-100">
-                <Link
-                  href={`/blog/${post.id}`}
-                  className="text-blue-500 font-medium hover:underline"
-                >
-                  Read More
-                </Link>
-              </div>
+            <div key={post.id} className="border p-4 rounded-lg shadow-md">
+              <h2 className="font-semibold text-xl">{post.title}</h2>
+              <p className="mt-2 text-sm">{post.body.slice(0, 100)}...</p>
+              <Link href={`/blog/${post.id}`} className="mt-4 text-blue-600 hover:underline inline-block">
+                View More
+              </Link>
             </div>
           ))}
         </div>
       )}
 
-     {/* Pagination Controls */}
-<div className="flex flex-wrap justify-center items-center mt-8 space-x-2">
-  {/* Previous Button */}
-  <button
-    className="px-3 py-2 text-sm bg-gray-200 text-gray-700 rounded-l disabled:opacity-50"
-    onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-    disabled={page === 1}
-  >
-    Previous
-  </button>
+      {/* Pagination Controls */}
+      <div className="flex flex-wrap justify-center items-center mt-8 space-x-2">
+        {/* Previous Button */}
+        <button
+          className="px-3 py-2 text-sm bg-gray-200 text-gray-700 rounded-l disabled:opacity-50"
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          disabled={page === 1}
+        >
+          Previous
+        </button>
 
-  {/* Page Numbers */}
-  <div className="flex flex-wrap justify-center items-center space-x-1">
-    {paginationRange.map((pageNumber) => (
-      <button
-        key={pageNumber}
-        className={`px-3 py-2 text-sm ${
-          pageNumber === page
-            ? 'bg-blue-500 text-white'
-            : 'bg-gray-200 text-gray-700'
-        } rounded`}
-        onClick={() => setPage(pageNumber)}
-      >
-        {pageNumber}
-      </button>
-    ))}
+        {/* Page Numbers */}
+        <div className="flex flex-wrap justify-center items-center space-x-1">
+          {paginationRange.map((pageNumber) => (
+            <button
+              key={pageNumber}
+              className={`px-3 py-2 text-sm ${pageNumber === page
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-200 text-gray-700'
+                } rounded`}
+              onClick={() => setPage(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          ))}
 
-    {/* Ellipsis */}
-    {paginationRange[paginationRange.length - 1] < TOTAL_PAGES && (
-      <span className="px-3 py-2 text-sm">...</span>
-    )}
-  </div>
+          {/* Ellipsis */}
+          {paginationRange[paginationRange.length - 1] < TOTAL_PAGES && (
+            <span className="px-3 py-2 text-sm">...</span>
+          )}
+        </div>
 
-  {/* Next Button */}
-  <button
-    className="mt-6 sm:mt-0 px-3 py-2 text-sm bg-gray-200 text-gray-700 rounded-r disabled:opacity-50"
-    onClick={() => setPage((prev) => Math.min(prev + 1, TOTAL_PAGES))}
-    disabled={page === TOTAL_PAGES}
-  >
-    Next
-  </button>
-</div>
+        {/* Next Button */}
+        <button
+          className="mt-6 sm:mt-0 px-3 py-2 text-sm bg-gray-200 text-gray-700 rounded-r disabled:opacity-50"
+          onClick={() => setPage((prev) => Math.min(prev + 1, TOTAL_PAGES))}
+          disabled={page === TOTAL_PAGES}
+        >
+          Next
+        </button>
+      </div>
 
 
       {/* Total Pages Info */}

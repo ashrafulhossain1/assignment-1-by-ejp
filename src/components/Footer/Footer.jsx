@@ -2,60 +2,33 @@ import Link from "next/link";
 
 
 const Footer = () => {
-    return (
-      <div className=" bg-neutral text-white py-6">
-        <div className="container mx-auto px-4 text-center">
-          <div className="mb-4">
-            <h1 className="text-xl font-semibold">ArticleAtlas</h1>
-            <p className="text-sm">Explore, Read, Discover</p>
-          </div>
-          <ul className="flex justify-center space-x-6 mb-4">
-            <li>
-              <Link href="/" className="hover:text-blue-300">Home</Link>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-blue-300">About</a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-blue-300">My Contact</a>
-            </li>
-            <li>
-              <a href="/privacy" className="hover:text-blue-300">Privacy Policy</a>
-            </li>
-          </ul>
-          <div className="flex justify-center space-x-4 mb-4">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-300"
-            >
-              Twitter
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-300"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-300"
-            >
-              LinkedIn
-            </a>
-          </div>
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} ArticleAtlas. All rights reserved.
-          </p>
+  return (
+    <footer className="bg-gray-800 text-white py-6">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        {/* Contact Information */}
+        <div className="mb-4 md:mb-0">
+          <p className="text-sm">Contact: johndoe@example.com</p>
+          <p className="text-sm">Phone: (555) 123-4567</p>
+        </div>
+
+        {/* Tagline or Motto */}
+        <div className="text-center">
+          <p className="text-sm font-semibold">Empowering Careers, Transforming Lives</p>
+        </div>
+
+        {/* Links */}
+        <div className="flex space-x-4 mt-2 md:mt-0">
+          <a href="#" className="text-gray-400 hover:text-blue-400 text-sm">Privacy Policy</a>
+          <a href="#" className="text-gray-400 hover:text-blue-400 text-sm">Terms of Service</a>
         </div>
       </div>
-    );
-  };
-  
-  export default Footer;
-  
+
+      {/* Copyright Notice */}
+      <div className="text-center mt-4 text-gray-500 text-xs">
+        John Doe. All rights reserved.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
