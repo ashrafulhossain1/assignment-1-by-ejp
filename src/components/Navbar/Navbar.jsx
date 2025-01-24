@@ -59,7 +59,7 @@ const Navbar = ({user}) => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Students Blog Post</a>
+        <a className="btn btn-ghost text-xl">Students Blogs Post</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
