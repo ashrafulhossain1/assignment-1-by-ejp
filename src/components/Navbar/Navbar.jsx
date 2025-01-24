@@ -12,7 +12,7 @@ const Navbar = ({user}) => {
         <Link
           href="/"
           className={`${
-            pathname === "/" ? "font-bold border-gray-800 border-b-2" : ""
+            pathname === "/" ? "font-bold border-red-500 border-b-2" : ""
           }`}
         >
           Home
@@ -22,7 +22,7 @@ const Navbar = ({user}) => {
         <Link
           href="/profile"
           className={`${
-            pathname === "/profile" ? "font-bold border-gray-800 border-b-2" : ""
+            pathname === "/profile" ? "font-bold border-red-500 border-b-2" : ""
           }`}
         >
           Profile
@@ -59,7 +59,7 @@ const Navbar = ({user}) => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Article Atlas</a>
+        <a className="btn btn-ghost text-xl">Students Blog Post</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -86,8 +86,6 @@ const Navbar = ({user}) => {
         </div>
 
       }
-
-
 
       </div>
     </nav>

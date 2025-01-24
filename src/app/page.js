@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">Article Atlas Blogs</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Students Blog Post</h1>
 
       {loading ? (
         <LoadingSpinner />
